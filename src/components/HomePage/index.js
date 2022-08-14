@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import SizeSelection from "./SizeSelection";
 import AlgorithmSelection from "./AlgorithmSelection";
+import SortingVisualizer from "./SortingVisualizer";
 export default function HomePage() {
   return (
     <>
@@ -11,6 +12,9 @@ export default function HomePage() {
             <AlgorithmSelection />
             <Button>Start</Button>
           </Menu>
+          <SortingContainer>
+            <SortingVisualizer />
+          </SortingContainer>
         </Container>
       </Wrapper>
     </>
@@ -45,4 +49,9 @@ const Button = styled.button`
   height: 50px;
   background-color: #4298f5;
   border-radius: 5px;
+`;
+const SortingContainer = styled.div`
+  display: flex;
+  height: 100vh;
+  justify-content: space-evenly;
 `;
