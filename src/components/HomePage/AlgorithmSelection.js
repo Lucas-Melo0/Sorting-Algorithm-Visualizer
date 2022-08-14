@@ -11,10 +11,10 @@ const AlgorithmSelector = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
+  color: #141b41;
   padding: 5px 5px;
   width: 220px;
   height: 50px;
-  background-color: #4298f5;
+  background-color: #6f9ceb;
   border-radius: 5px;
 `;

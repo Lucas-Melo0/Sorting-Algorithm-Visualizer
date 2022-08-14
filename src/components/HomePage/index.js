@@ -22,7 +22,7 @@ export default function HomePage() {
 }
 
 const Wrapper = styled.div`
-  background-color: aliceblue;
+  background-color: #98b9f2;
   width: 100vw;
   height: 100vh;
 `;
@@ -43,15 +43,15 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
+  color: #141b41;
   padding: 5px 5px;
   width: 220px;
   height: 50px;
-  background-color: #4298f5;
+  background-color: #6f9ceb;
   border-radius: 5px;
 `;
 const SortingContainer = styled.div`
   display: flex;
-  height: 100vh;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  column-gap: 2px;
 `;

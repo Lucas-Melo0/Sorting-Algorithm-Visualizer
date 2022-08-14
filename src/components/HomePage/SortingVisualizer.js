@@ -2,21 +2,19 @@ import styled from "styled-components";
 import { randomArray } from "../../auxiliary/randomArray";
 
 export default function SortingVisualizer() {
+  //
   return (
     <>
       {randomArray().map((value, index) => {
-        return (
-          <VisualizerBar value={value} key={index}>
-            {value}
-          </VisualizerBar>
-        );
+        return <VisualizerBar value={value} key={index}></VisualizerBar>;
       })}
     </>
   );
 }
 
 const VisualizerBar = styled.div`
-  width: 40px;
+  display: inline-block;
+  width: 4px;
   height: ${({ value }) => `${value / 2}px`};
-  background-color: #ffffff;
+  background-color: #ebf2fa;
 `;
