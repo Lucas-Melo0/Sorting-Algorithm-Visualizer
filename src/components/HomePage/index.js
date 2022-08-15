@@ -44,7 +44,6 @@ const Button = styled.button`
   align-items: center;
   justify-content: center;
   color: #141b41;
-  padding: 5px 5px;
   width: 220px;
   height: 50px;
   background-color: #6f9ceb;

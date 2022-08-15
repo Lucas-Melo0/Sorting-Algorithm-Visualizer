@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { randomArray } from "../../auxiliary/randomArray";
 
 export default function SortingVisualizer() {
-  //
   return (
     <>
       {randomArray().map((value, index) => {
