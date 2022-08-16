@@ -1,14 +1,33 @@
 import styled from "styled-components";
 import SizeSelection from "./SizeSelection";
 import { randomArray } from "../../auxiliary/randomArray";
-import selectionSort from "../../auxiliary/Algorithms/SelectionSort";
 import { useState } from "react";
 export default function HomePage() {
   const [generatedArray, setGeneratedArray] = useState(randomArray());
 
-  function selectionSorting(array) {
-    const sortedArray = selectionSort(array);
-    setGeneratedArray([...generatedArray, sortedArray]);
+  async function selectionSort(array) {
+    for (let i = 0; i < array.length - 1; i++) {
+      let minIndex = i;
+      for (let j = i; j < array.length; j++) {
+        if (array[j] < array[minIndex]) {
+          minIndex = j;
+        }
+      }
+
+      let temp = array[i];
+      array[i] = array[minIndex];
+      setGeneratedArray([...generatedArray, array]);
+      array[minIndex] = temp;
+      setGeneratedArray([...generatedArray, array]);
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          resolve();
+        }, 300)
+      );
+    }
+    console.log(array);
+    setGeneratedArray([...generatedArray, array]);
+    return generatedArray;
   }
 
   return (
@@ -17,7 +36,7 @@ export default function HomePage() {
         <Container>
           <Menu>
             <SizeSelection />
-            <AlgorithmSelector onClick={() => selectionSorting(generatedArray)}>
+            <AlgorithmSelector onClick={() => selectionSort(generatedArray)}>
               Selection Sort
             </AlgorithmSelector>
             <Button>Start</Button>
