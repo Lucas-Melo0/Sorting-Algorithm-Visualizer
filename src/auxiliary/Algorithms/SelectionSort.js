@@ -1,7 +1,7 @@
 export default function selectionSort(array) {
   for (let i = 0; i < array.length - 1; i++) {
     let minIndex = i;
-    for (j = i; j < array.length; j++) {
+    for (let j = i; j < array.length; j++) {
       if (array[j] < array[minIndex]) {
         minIndex = j;
       }
@@ -11,5 +11,7 @@ export default function selectionSort(array) {
     array[i] = array[minIndex];
     array[minIndex] = temp;
   }
+  console.log(array);
+
   return array;
 }
