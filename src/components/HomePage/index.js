@@ -7,15 +7,14 @@ import AlgorithmSelection from "./AlgorithmSelection";
 export default function HomePage() {
   const [generatedArray, setGeneratedArray] = useState(randomArray());
   const [selectedAlgo, setSelectedAlgo] = useState("");
-  const algorithmList = [
-    selectionSort(generatedArray),
-    BubbleSort(generatedArray),
-  ];
 
   function startAlgorithm() {
-    const algorithmIndex = algorithmList.indexOf(selectedAlgo);
-    console.log(algorithmIndex);
-    console.log(selectedAlgo);
+    if (selectedAlgo === "BubbleSort") {
+      BubbleSort(generatedArray);
+    }
+    if (selectedAlgo === "SelectionSort") {
+      selectionSort(generatedArray);
+    }
   }
 
   async function selectionSort(array) {
@@ -37,7 +36,7 @@ export default function HomePage() {
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
-        }, 30)
+        }, 50)
       );
     }
     return generatedArray;
@@ -60,7 +59,7 @@ export default function HomePage() {
           await new Promise((resolve) =>
             setTimeout(() => {
               resolve();
-            }, 30)
+            }, 50)
           );
         }
       }
@@ -74,6 +73,9 @@ export default function HomePage() {
             <SizeSelection />
             <AlgorithmSelection setSelectedAlgo={setSelectedAlgo} />
             <Button onClick={startAlgorithm}>Start</Button>
+            <Button onClick={() => setGeneratedArray(randomArray())}>
+              Gerar nova lista
+            </Button>
           </Menu>
           <SortingContainer>
             {generatedArray.map((value, index) => {
