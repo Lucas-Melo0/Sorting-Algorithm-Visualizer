@@ -2,9 +2,21 @@ import styled from "styled-components";
 import SizeSelection from "./SizeSelection";
 import { randomArray } from "../../auxiliary/randomArray";
 import { useState } from "react";
-import BubbleSort from "../../auxiliary/Algorithms";
+import AlgorithmSelection from "./AlgorithmSelection";
+
 export default function HomePage() {
   const [generatedArray, setGeneratedArray] = useState(randomArray());
+  const [selectedAlgo, setSelectedAlgo] = useState("");
+  const algorithmList = [
+    selectionSort(generatedArray),
+    BubbleSort(generatedArray),
+  ];
+
+  function startAlgorithm() {
+    const algorithmIndex = algorithmList.indexOf(selectedAlgo);
+    console.log(algorithmIndex);
+    console.log(selectedAlgo);
+  }
 
   async function selectionSort(array) {
     for (let i = 0; i < array.length - 1; i++) {
@@ -54,17 +66,14 @@ export default function HomePage() {
       }
     }
   }
-
   return (
     <>
       <Wrapper>
         <Container>
           <Menu>
             <SizeSelection />
-            <AlgorithmSelector onClick={() => selectionSort(generatedArray)}>
-              Selection Sort
-            </AlgorithmSelector>
-            <Button>Start</Button>
+            <AlgorithmSelection setSelectedAlgo={setSelectedAlgo} />
+            <Button onClick={startAlgorithm}>Start</Button>
           </Menu>
           <SortingContainer>
             {generatedArray.map((value, index) => {
@@ -98,17 +107,6 @@ const Menu = styled.div`
   height: 20vh;
   justify-content: space-between;
   align-items: center;
-`;
-const AlgorithmSelector = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #141b41;
-  padding: 5px 5px;
-  width: 220px;
-  height: 50px;
-  background-color: #6f9ceb;
-  border-radius: 5px;
 `;
 
 const Button = styled.button`
