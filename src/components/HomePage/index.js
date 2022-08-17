@@ -2,13 +2,15 @@ import styled from "styled-components";
 import SizeSelection from "./SizeSelection";
 import { randomArray } from "../../auxiliary/randomArray";
 import { useState } from "react";
+import BubbleSort from "../../auxiliary/Algorithms";
 export default function HomePage() {
   const [generatedArray, setGeneratedArray] = useState(randomArray());
 
   async function selectionSort(array) {
     for (let i = 0; i < array.length - 1; i++) {
       let minIndex = i;
-      for (let j = i; j < array.length; j++) {
+
+      for (let j = i + 1; j < array.length; j++) {
         if (array[j] < array[minIndex]) {
           minIndex = j;
         }
@@ -19,15 +21,38 @@ export default function HomePage() {
       setGeneratedArray([...generatedArray, array]);
       array[minIndex] = temp;
       setGeneratedArray([...generatedArray, array]);
+      console.log(generatedArray);
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
-        }, 300)
+        }, 30)
       );
     }
-    console.log(array);
-    setGeneratedArray([...generatedArray, array]);
     return generatedArray;
+  }
+  async function BubbleSort(array) {
+    let swapCounter = -1;
+    for (let i = 0; i < array.length - 1; i++) {
+      if (swapCounter === 0) {
+        break;
+      }
+      swapCounter = 0;
+      for (let j = 0; j < array.length - i; j++) {
+        if (array[j] > array[j + 1]) {
+          let temp = array[j];
+          array[j] = array[j + 1];
+          setGeneratedArray([...generatedArray, array]);
+          array[j + 1] = temp;
+          setGeneratedArray([...generatedArray, array]);
+          swapCounter++;
+          await new Promise((resolve) =>
+            setTimeout(() => {
+              resolve();
+            }, 30)
+          );
+        }
+      }
+    }
   }
 
   return (
@@ -43,7 +68,13 @@ export default function HomePage() {
           </Menu>
           <SortingContainer>
             {generatedArray.map((value, index) => {
-              return <VisualizerBar value={value} key={index}></VisualizerBar>;
+              return (
+                <VisualizerBar
+                  color={"#FFFFFF"}
+                  value={value}
+                  key={index}
+                ></VisualizerBar>
+              );
             })}
           </SortingContainer>
         </Container>
@@ -100,5 +131,5 @@ const VisualizerBar = styled.div`
   display: inline-block;
   width: 4px;
   height: ${({ value }) => `${value / 2}px`};
-  background-color: #ebf2fa;
+  background-color: ${({ color }) => color};
 `;
