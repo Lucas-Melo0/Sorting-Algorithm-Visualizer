@@ -3,6 +3,7 @@ export default function AlgorithmSelection({ setSelectedAlgo }) {
   function handleForm(event) {
     setSelectedAlgo(event.target.value);
   }
+
   return (
     <>
       <AlgorithmSelector>
