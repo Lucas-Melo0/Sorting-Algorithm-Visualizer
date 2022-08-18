@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 export default function AlgorithmSelection({ setSelectedAlgo }) {
   function handleForm(event) {
@@ -11,6 +10,7 @@ export default function AlgorithmSelection({ setSelectedAlgo }) {
           <option>Selecione um algoritmo</option>
           <option value={"SelectionSort"}>Selection Sort</option>
           <option value={"BubbleSort"}>Bubble Sort</option>
+          <option value={"InsertionSort"}>Insertion Sort</option>
         </select>
       </AlgorithmSelector>
     </>

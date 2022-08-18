@@ -15,6 +15,9 @@ export default function HomePage() {
     if (selectedAlgo === "SelectionSort") {
       selectionSort(generatedArray);
     }
+    if (selectedAlgo === "InsertionSort") {
+      insertionSort(generatedArray);
+    }
   }
 
   async function selectionSort(array) {
@@ -64,6 +67,26 @@ export default function HomePage() {
         }
       }
     }
+  }
+  async function insertionSort(array) {
+    for (let i = 1; i < array.length; i++) {
+      let current = array[i];
+
+      let j = i - 1;
+      while (j > -1 && current < array[j]) {
+        array[j + 1] = array[j];
+        setGeneratedArray([...generatedArray, array]);
+        j--;
+        await new Promise((resolve) =>
+          setTimeout(() => {
+            resolve();
+          }, 50)
+        );
+      }
+      array[j + 1] = current;
+      setGeneratedArray([...generatedArray, array]);
+    }
+    return array;
   }
   return (
     <>
