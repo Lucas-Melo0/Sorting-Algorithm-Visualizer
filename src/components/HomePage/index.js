@@ -27,6 +27,11 @@ export default function HomePage() {
       for (let j = i + 1; j < array.length; j++) {
         if (array[j] < array[minIndex]) {
           minIndex = j;
+          await new Promise((resolve) =>
+            setTimeout(() => {
+              resolve();
+            }, 50)
+          );
         }
       }
 
@@ -35,12 +40,6 @@ export default function HomePage() {
       setGeneratedArray([...generatedArray, array]);
       array[minIndex] = temp;
       setGeneratedArray([...generatedArray, array]);
-      console.log(generatedArray);
-      await new Promise((resolve) =>
-        setTimeout(() => {
-          resolve();
-        }, 50)
-      );
     }
     return generatedArray;
   }
