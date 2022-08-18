@@ -1,13 +1,24 @@
 import styled from "styled-components";
-export default function SizeSelection() {
+export default function SizeSelection({ setSelectedSize }) {
+  function handleForm(event) {
+    setSelectedSize(event.target.value);
+  }
   return (
     <>
-      <SizeSelector>Selecione o tamanho da lista</SizeSelector>
+      <SizeSelector>
+        <select onChange={handleForm}>
+          <option>Selecione o tamanho da lista</option>
+          <option value={25}>Pequeno</option>
+          <option value={50}>Médio</option>
+          <option value={100}>Grande</option>
+        </select>
+      </SizeSelector>
     </>
   );
 }
 
-const SizeSelector = styled.div`
+const SizeSelector = styled.form`
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,4 +28,8 @@ const SizeSelector = styled.div`
   height: 50px;
   background-color: #6f9ceb;
   border-radius: 5px;
+  select {
+    all: unset;
+    background-color: #6f9ceb;
+  }
 `;

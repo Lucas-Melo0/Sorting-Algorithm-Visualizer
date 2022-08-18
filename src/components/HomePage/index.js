@@ -5,8 +5,9 @@ import { useState } from "react";
 import AlgorithmSelection from "./AlgorithmSelection";
 
 export default function HomePage() {
-  const [generatedArray, setGeneratedArray] = useState(randomArray());
+  const [generatedArray, setGeneratedArray] = useState(randomArray(50));
   const [selectedAlgo, setSelectedAlgo] = useState("");
+  const [selectedSize, setSelectedSize] = useState("");
 
   function startAlgorithm() {
     if (selectedAlgo === "BubbleSort") {
@@ -92,10 +93,12 @@ export default function HomePage() {
       <Wrapper>
         <Container>
           <Menu>
-            <SizeSelection />
+            <SizeSelection setSelectedSize={setSelectedSize} />
             <AlgorithmSelection setSelectedAlgo={setSelectedAlgo} />
             <Button onClick={startAlgorithm}>Start</Button>
-            <Button onClick={() => setGeneratedArray(randomArray())}>
+            <Button
+              onClick={() => setGeneratedArray(randomArray(selectedSize))}
+            >
               Gerar nova lista
             </Button>
           </Menu>
