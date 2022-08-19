@@ -45,7 +45,7 @@ async function selectionSort(array, setter, SetIsRunning) {
   SetIsRunning(false);
   return array;
 }
-async function BubbleSort(array, setter, SetIsRunning) {
+async function bubbleSort(array, setter, SetIsRunning) {
   SetIsRunning(true);
   let swapCounter = -1;
   for (let i = 0; i < array.length - 1; i++) {
@@ -71,4 +71,4 @@ async function BubbleSort(array, setter, SetIsRunning) {
   }
   SetIsRunning(false);
 }
-export { insertionSort, selectionSort, BubbleSort };
+export { insertionSort, selectionSort, bubbleSort };

@@ -4,9 +4,9 @@ import { useState } from "react";
 import AlgorithmSelection from "./AlgorithmSelection";
 import {
   insertionSort,
+  bubbleSort,
   selectionSort,
-  BubbleSort,
-} from "../../auxiliary/Algorithms";
+} from "../../auxiliary/algorithms";
 import {
   VisualizerBar,
   SortingContainer,
@@ -24,13 +24,20 @@ export default function HomePage() {
 
   function startAlgorithm() {
     if (selectedAlgo === "BubbleSort") {
-      BubbleSort(generatedArray, setGeneratedArray, SetIsRunning);
+      bubbleSort(generatedArray, setGeneratedArray, SetIsRunning);
     }
     if (selectedAlgo === "SelectionSort") {
       selectionSort(generatedArray, setGeneratedArray, SetIsRunning);
     }
     if (selectedAlgo === "InsertionSort") {
       insertionSort(generatedArray, setGeneratedArray, SetIsRunning);
+    }
+  }
+
+  function generateNewArray() {
+    if (selectedSize === "") alert("Selecione um tamanho ");
+    else {
+      setGeneratedArray(randomArray(selectedSize));
     }
   }
 
@@ -44,11 +51,7 @@ export default function HomePage() {
             <Button disabled={isRunning} onClick={startAlgorithm}>
               Start
             </Button>
-            <Button
-              onClick={() => setGeneratedArray(randomArray(selectedSize))}
-            >
-              Gerar nova lista
-            </Button>
+            <Button onClick={generateNewArray}>Gerar nova lista</Button>
           </Menu>
           <SortingContainer>
             {generatedArray.map((value, index) => {
