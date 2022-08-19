@@ -1,4 +1,5 @@
-async function insertionSort(array, setter) {
+async function insertionSort(array, setter, SetIsRunning) {
+  SetIsRunning(true);
   for (let i = 1; i < array.length; i++) {
     let current = array[i];
 
@@ -16,9 +17,11 @@ async function insertionSort(array, setter) {
     array[j + 1] = current;
     setter([...array, array]);
   }
+  SetIsRunning(false);
   return array;
 }
-async function selectionSort(array, setter) {
+async function selectionSort(array, setter, SetIsRunning) {
+  SetIsRunning(true);
   for (let i = 0; i < array.length - 1; i++) {
     let minIndex = i;
 
@@ -39,9 +42,11 @@ async function selectionSort(array, setter) {
     array[minIndex] = temp;
     setter([...array, array]);
   }
+  SetIsRunning(false);
   return array;
 }
-async function BubbleSort(array, setter) {
+async function BubbleSort(array, setter, SetIsRunning) {
+  SetIsRunning(true);
   let swapCounter = -1;
   for (let i = 0; i < array.length - 1; i++) {
     if (swapCounter === 0) {
@@ -64,5 +69,6 @@ async function BubbleSort(array, setter) {
       }
     }
   }
+  SetIsRunning(false);
 }
 export { insertionSort, selectionSort, BubbleSort };

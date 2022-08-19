@@ -35,6 +35,11 @@ const AlgorithmSelector = styled.form`
   }
   select {
     all: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
+    height: inherit;
     background-color: #6f9ceb;
   }
 `;

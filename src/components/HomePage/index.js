@@ -20,16 +20,17 @@ export default function HomePage() {
   const [generatedArray, setGeneratedArray] = useState(randomArray(50));
   const [selectedAlgo, setSelectedAlgo] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
+  const [isRunning, SetIsRunning] = useState(false);
 
   function startAlgorithm() {
     if (selectedAlgo === "BubbleSort") {
-      BubbleSort(generatedArray, setGeneratedArray);
+      BubbleSort(generatedArray, setGeneratedArray, SetIsRunning);
     }
     if (selectedAlgo === "SelectionSort") {
-      selectionSort(generatedArray, setGeneratedArray);
+      selectionSort(generatedArray, setGeneratedArray, SetIsRunning);
     }
     if (selectedAlgo === "InsertionSort") {
-      insertionSort(generatedArray, setGeneratedArray);
+      insertionSort(generatedArray, setGeneratedArray, SetIsRunning);
     }
   }
 
@@ -40,7 +41,9 @@ export default function HomePage() {
           <Menu>
             <SizeSelection setSelectedSize={setSelectedSize} />
             <AlgorithmSelection setSelectedAlgo={setSelectedAlgo} />
-            <Button onClick={startAlgorithm}>Start</Button>
+            <Button disabled={isRunning} onClick={startAlgorithm}>
+              Start
+            </Button>
             <Button
               onClick={() => setGeneratedArray(randomArray(selectedSize))}
             >
@@ -51,9 +54,9 @@ export default function HomePage() {
             {generatedArray.map((value, index) => {
               return (
                 <VisualizerBar
+                  key={index}
                   color={"#FFFFFF"}
                   value={value}
-                  key={index}
                 ></VisualizerBar>
               );
             })}

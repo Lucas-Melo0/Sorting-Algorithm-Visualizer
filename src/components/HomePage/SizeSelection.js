@@ -34,6 +34,11 @@ const SizeSelector = styled.form`
   cursor: pointer;
   select {
     all: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
+    height: inherit;
     background-color: #6f9ceb;
   }
 `;
