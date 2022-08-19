@@ -14,7 +14,7 @@ import {
   Menu,
   Container,
   Wrapper,
-} from "../HomeContainer";
+} from "./HomeContainer";
 
 export default function HomePage() {
   const [generatedArray, setGeneratedArray] = useState(randomArray(50));

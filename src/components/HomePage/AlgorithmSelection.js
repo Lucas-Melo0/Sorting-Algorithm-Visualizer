@@ -20,6 +20,7 @@ export default function AlgorithmSelection({ setSelectedAlgo }) {
 
 const AlgorithmSelector = styled.form`
   display: flex;
+  cursor: pointer;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -29,6 +30,9 @@ const AlgorithmSelector = styled.form`
   height: 50px;
   background-color: #6f9ceb;
   border-radius: 5px;
+  &:hover {
+    opacity: 0.7;
+  }
   select {
     all: unset;
     background-color: #6f9ceb;

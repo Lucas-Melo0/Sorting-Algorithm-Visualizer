@@ -28,6 +28,10 @@ const SizeSelector = styled.form`
   height: 50px;
   background-color: #6f9ceb;
   border-radius: 5px;
+  &:hover {
+    opacity: 0.7;
+  }
+  cursor: pointer;
   select {
     all: unset;
     background-color: #6f9ceb;

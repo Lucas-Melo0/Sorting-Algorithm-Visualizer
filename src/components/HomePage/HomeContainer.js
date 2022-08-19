@@ -19,6 +19,7 @@ const Menu = styled.div`
 const Button = styled.button`
   all: unset;
   display: flex;
+  cursor: pointer;
   align-items: center;
   justify-content: center;
   color: #141b41;
@@ -26,6 +27,9 @@ const Button = styled.button`
   height: 50px;
   background-color: #6f9ceb;
   border-radius: 5px;
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 const SortingContainer = styled.div`
   display: flex;
